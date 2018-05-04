@@ -60,8 +60,19 @@ describe("Recipe", () => {
 describe("Pantry", () => {
   describe("attributes", () => {
     const pantry = new Pantry()
+
     it('has a stock that starts empty', () => {
       expect(pantry.stock).to.deep.equal({})
+    })
+  })
+
+  describe("functions", () => {
+    describe("stockCheck", () => {
+      it("checks the stock of an ingredient in the pantry", () => {
+        const pantry = new Pantry()
+
+        expect(pantry.stockCheck("Cheese")).to.equal(0)
+      })
     })
   })
 })
