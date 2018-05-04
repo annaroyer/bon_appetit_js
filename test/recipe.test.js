@@ -94,5 +94,19 @@ describe("Pantry", () => {
         expect(pantry.stockCheck("Cheese")).to.equal(30)
       })
     })
+
+    describe("addToShoppingList", () => {
+      const pantry = new Pantry()
+
+      const pizzaRecipe = new Recipe("Cheese Pizza")
+      pizzaRecipe.addIngredient("Cheese", 20)
+      pizzaRecipe.addIngredient("Flour", 20)
+
+      it("adds a recipe's ingredients and amounts to a pantry shopping list", () => {
+        pantry.addToShoppingList(pizzaRecipe)
+
+        expect(pantry.shoppingList).to.deep.equal({ "Cheese": 20, "Flour": 20 })
+      })
+    })
   })
 })
