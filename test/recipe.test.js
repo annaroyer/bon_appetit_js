@@ -68,10 +68,15 @@ describe("Pantry", () => {
 
   describe("functions", () => {
     describe("stockCheck", () => {
-      it("returns 0 if the food does not exist in the pantry", () => {
-        const pantry = new Pantry()
+      const pantry = new Pantry()
 
+      it("returns 0 if the food does not exist in the pantry", () => {
         expect(pantry.stockCheck("Cheese")).to.equal(0)
+      })
+
+      it("returns the amount of the food if it does exist in the pantry", () => {
+        pantry.restock("Cheese", 10)
+        expect(pantry.stockCheck("Cheese")).to.equal(10)
       })
     })
 
