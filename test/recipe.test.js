@@ -1,5 +1,6 @@
 import { expect } from "chai"
 import Recipe from "../lib/recipe"
+import Pantry from "../lib/pantry"
 
 describe("Recipe", () => {
   describe("attributes", () => {
@@ -56,3 +57,11 @@ describe("Recipe", () => {
   })
 })
 
+describe("Pantry", () => {
+  describe("attributes", () => {
+    const pantry = new Pantry()
+    it('has a stock that starts empty', () => {
+      expect(pantry.stock).to.deep.equal({})
+    })
+  })
+})
