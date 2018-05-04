@@ -64,6 +64,10 @@ describe("Pantry", () => {
     it('has a stock that starts empty', () => {
       expect(pantry.stock).to.deep.equal({})
     })
+
+    it('has a shopping list that starts empty', () => {
+      expect(pantry.shoppingList).to.deep.equal({})
+    })
   })
 
   describe("functions", () => {
@@ -92,6 +96,29 @@ describe("Pantry", () => {
         pantry.restock("Cheese", 20)
 
         expect(pantry.stockCheck("Cheese")).to.equal(30)
+      })
+    })
+
+    describe("addToShoppingList", () => {
+      const pantry = new Pantry()
+
+      const pizzaRecipe = new Recipe("Cheese Pizza")
+      pizzaRecipe.addIngredient("Cheese", 20)
+      pizzaRecipe.addIngredient("Flour", 20)
+
+      const spaghettiRecipe = new Recipe("Spaghetti")
+      spaghettiRecipe.addIngredient("Noodles", 10)
+      spaghettiRecipe.addIngredient("Sauce", 10)
+      spaghettiRecipe.addIngredient("Cheese", 5)
+
+      it("adds a recipe's ingredients and amounts to a pantry shopping list", () => {
+        pantry.addToShoppingList(pizzaRecipe)
+
+        expect(pantry.shoppingList).to.deep.equal({ "Cheese": 20, "Flour": 20 })
+
+        pantry.addToShoppingList(spaghettiRecipe)
+
+        expect(pantry.shoppingList).to.deep.equal({"Cheese": 25, "Flour": 20, "Noodles": 10, "Sauce": 10})
       })
     })
   })
