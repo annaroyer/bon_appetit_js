@@ -102,10 +102,19 @@ describe("Pantry", () => {
       pizzaRecipe.addIngredient("Cheese", 20)
       pizzaRecipe.addIngredient("Flour", 20)
 
+      const spaghettiRecipe = new Recipe("Spaghetti")
+      spaghettiRecipe.addIngredient("Noodles", 10)
+      spaghettiRecipe.addIngredient("Sauce", 10)
+      spaghettiRecipe.addIngredient("Cheese", 5)
+
       it("adds a recipe's ingredients and amounts to a pantry shopping list", () => {
         pantry.addToShoppingList(pizzaRecipe)
 
         expect(pantry.shoppingList).to.deep.equal({ "Cheese": 20, "Flour": 20 })
+
+        pantry.addToShoppingList(spaghettiRecipe)
+
+        expect(pantry.shoppingList).to.deep.equal({"Cheese": 25, "Flour": 20, "Noodles": 10, "Sauce": 10})
       })
     })
   })
