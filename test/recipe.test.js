@@ -64,6 +64,10 @@ describe("Pantry", () => {
     it('has a stock that starts empty', () => {
       expect(pantry.stock).to.deep.equal({})
     })
+
+    it('has a shopping list that starts empty', () => {
+      expect(pantry.shoppingList).to.deep.equal({})
+    })
   })
 
   describe("functions", () => {
